@@ -30,11 +30,11 @@ defines(function() {
          * Helper function checking if object holding pressed keys is empty
          **/
         anyKeyPressed: function() {
-            var obj = this.presses,
+            var obj = this.locks,
                 hasOwnProperty = Object.prototype.hasOwnProperty;
 
             for (var key in obj) {
-                if (hasOwnProperty.call(obj, key)) return true;
+                if (obj[key]) return true;
             }
 
             return false;
