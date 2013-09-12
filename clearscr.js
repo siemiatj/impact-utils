@@ -17,7 +17,18 @@ ig.module(
         if (ig.ua.mobile){
             ig.System.inject({
                 clear: function(color) {
-                    this.canvas.width = this.canvas.width;
+                    this.context.width = this.canvas.width;
+                }
+            });
+        } else {
+            ig.System.inject({
+                clear: function(color) {
+                    if (color) {
+                        this.context.fillStyle = color;
+                        this.context.fillRect(0, 0, ig.system.realWidth, ig.system.realHeight);
+                    } else {
+                        this.context.clearRect(0, 0, ig.system.realWidth, ig.system.realHeight);
+                    }
                 }
             });
         }
